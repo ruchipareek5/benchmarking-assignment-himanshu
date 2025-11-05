@@ -24,11 +24,13 @@ export default function AddStudent() {
   const isValidEmail = (email) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  // Handle form submission 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, email } = formData;
+    const { name, email, city } = formData;
+
+    
 
     // Basic validation
     if (!name.trim()) {
@@ -41,8 +43,50 @@ export default function AddStudent() {
       return;
     }
 
-    // Clear error once valid
+    // Create a new student object with proper structure
+    const newStudent = {
+      id: Date.now(), // Unique ID
+      name: name.trim(),
+      email: email.trim(),
+      address: {
+        city: city.trim(),
+        street: "",
+        suite: "", 
+        zipcode: "",
+        geo: { lat: "", lng: "" }
+      },
+      city: city.trim(), 
+      phone: "",
+      website: "",
+      company: { name: "", catchPhrase: "", bs: "" },
+      profileImg: `https://randomuser.me/api/portraits/lego/${Math.floor(Math.random() * 8) + 1}.jpg` 
+    };
+
+
+
+   
+    const existingStudents = JSON.parse(localStorage.getItem("addedStudents")) || [];
+   
+    // Add the new student to the beginning of the array
+    const updatedStudents = [newStudent, ...existingStudents];
+   
+
+    //Save back to localStorage with correct key "addedStudents"
+    localStorage.setItem("addedStudents", JSON.stringify(updatedStudents));
+   
+
+    //Verify the data was actually saved
+    const verifySave = JSON.parse(localStorage.getItem("addedStudents")) || [];
+   
+
+    // Reset form
+    setFormData({ name: "", email: "", city: "" });
     setError("");
+
+  
+
+    // Navigate back to home
+    navigate("/");
   };
 
   return (
@@ -54,9 +98,7 @@ export default function AddStudent() {
         {error && <p className="error-msg">{error}</p>}
 
         <div className="form-group">
-          <label htmlFor="name">
-            Name<span>*</span>
-          </label>
+          <label htmlFor="name">Name<span>*</span></label>
           <input
             type="text"
             id="name"
@@ -69,9 +111,7 @@ export default function AddStudent() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="email">
-            Email<span>*</span>
-          </label>
+          <label htmlFor="email">Email<span>*</span></label>
           <input
             type="email"
             id="email"
@@ -96,9 +136,7 @@ export default function AddStudent() {
         </div>
 
         <div className="form-actions">
-          <button type="submit" className="submit-btn">
-            Add Student
-          </button>
+          <button type="submit" className="submit-btn">Add Student</button>
           <button
             type="button"
             className="cancel-btn"

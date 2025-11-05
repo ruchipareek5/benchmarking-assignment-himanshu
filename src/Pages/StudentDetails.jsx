@@ -6,7 +6,15 @@ import "./StudentDetails.css";
 export default function StudentDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const student = studentDetails.find((s) => s.id === parseInt(id));
+  
+  // Check if it's a custom student from studentDetailsData
+  const customStudent = studentDetails.find((s) => s.id === parseInt(id));
+  
+  // Check if it's a newly added student from localStorage
+  const addedStudents = JSON.parse(localStorage.getItem("addedStudents")) || [];
+  const addedStudent = addedStudents.find((s) => s.id === parseInt(id));
+
+  const student = customStudent || addedStudent;
 
   if (!student) {
     return (
@@ -19,6 +27,9 @@ export default function StudentDetails() {
     );
   }
 
+  // Check if it's a basic student (newly added) or detailed student (from API)
+  const isBasicStudent = !customStudent;
+
   return (
     <div className="student-details-container">
       <button onClick={() => navigate("/")} className="back-btn">
@@ -30,53 +41,58 @@ export default function StudentDetails() {
 
         <div className="student-profile">
           <img
-            src={student.profileImg}
+            src={student.profileImg || "/default-avatar.jpg"}
             alt={student.name}
             className="student-image"
           />
           <div className="student-info">
             <h3>{student.name}</h3>
             <p>{student.email}</p>
-            <p>{student.city}</p>
+            <p>{student.address?.city || student.city}</p>
 
-            <div className="student-meta">
-              <p>
-                <strong>Assessment Date:</strong> {student.assessmentDate}
-              </p>
-              <p>
-                <strong>Average Score:</strong> {student.averageScore}/100
-              </p>
-              <p>
-                <strong>Last Score:</strong> {student.lastScore}/100
-              </p>
-            </div>
+            {isBasicStudent ? (
+              <div className="student-meta">
+                <p><strong>Status:</strong> Basic Profile</p>
+                <p><em>Detailed assessment data not available for newly added students.</em></p>
+              </div>
+            ) : (
+              <div className="student-meta">
+                <p><strong>Assessment Date:</strong> {student.assessmentDate}</p>
+                <p><strong>Average Score:</strong> {student.averageScore}/100</p>
+                <p><strong>Last Score:</strong> {student.lastScore}/100</p>
+              </div>
+            )}
           </div>
         </div>
 
-        <div className="performance-section">
-          <h4>Performance Overview</h4>
-          <table>
-            <thead>
-              <tr>
-                <th>Parameter</th>
-                <th>Score (/10)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {student.performance.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.parameter}</td>
-                  <td>{item.score}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {!isBasicStudent && (
+          <>
+            <div className="performance-section">
+              <h4>Performance Overview</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Parameter</th>
+                    <th>Score (/10)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {student.performance.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.parameter}</td>
+                      <td>{item.score}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-        <div className="remarks-section">
-          <h4>Remarks</h4>
-          <p>{student.remarks}</p>
-        </div>
+            <div className="remarks-section">
+              <h4>Remarks</h4>
+              <p>{student.remarks}</p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
