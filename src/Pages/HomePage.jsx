@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // 👈 import navigation hook
+import { useNavigate } from "react-router-dom"; //  import navigation hook
 import UserCard from "../Components/UserCard";
 import "./HomePage.css";
 
@@ -8,7 +8,7 @@ export const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate(); // 👈 create navigate instance
+  const navigate = useNavigate(); //  create navigate instance
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -35,7 +35,7 @@ export const HomePage = () => {
       .some((field) => field.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
-  // 👇 Navigate to student details when clicked
+  // Navigate to student details when clicked
   const handleCardClick = (id) => {
     navigate(`/student/${id}`);
   };
@@ -45,7 +45,7 @@ export const HomePage = () => {
       <h1 className="welcome">Welcome to the Student Dashboard</h1>
       <p className="subtitle">Search and click a student to view details</p>
 
-      {/* ✅ Search bar */}
+      {/*  Search bar */}
       <input
         type="text"
         placeholder="Search by name, email, or city..."
@@ -54,14 +54,14 @@ export const HomePage = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
-      {/* ✅ Grid of students */}
+      {/*  Grid of students */}
       <div className="grid-container">
         {filteredUsers.length > 0 ? (
           filteredUsers.map((user) => (
             <div
               key={user.id}
               className="card-click-wrapper"
-              onClick={() => handleCardClick(user.id)} // 👈 navigate on click
+              onClick={() => handleCardClick(user.id)} // navigate on click
             >
               <UserCard user={user} />
             </div>
@@ -73,3 +73,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+export default HomePage;
