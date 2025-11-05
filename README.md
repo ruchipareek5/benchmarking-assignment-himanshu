@@ -25,17 +25,17 @@ This project allows users to view student details, navigate between pages, and a
 
 ### Home Page
 
-![Student Dashboard Screenshot](./StudentDashboard.png)
+![Student Dashboard Screenshot](./StudentDashboard.PNG)
 
 
 ### Student Details Page
 
-![Student Details Screenshot](./StudentDetails.png)
+![Student Details Screenshot](./StudentDetails.PNG)
 
 
 ## Add Student Form
 
-![Add Student Form](./AddStudentForm.png)
+![Add Student Form](./AddStudentForm.PNG)
 
 
 
