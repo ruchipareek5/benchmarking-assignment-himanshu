@@ -20,9 +20,11 @@ export default function StudentDetails() {
     return (
       <div className="student-details-container">
         <h2>Student not found!</h2>
-        <button onClick={() => navigate("/")} className="back-btn">
+        
+          <button onClick={() => navigate("/")} className="back-btn">
           Back to Home
         </button>
+       
       </div>
     );
   }
@@ -46,9 +48,11 @@ export default function StudentDetails() {
             className="student-image"
           />
           <div className="student-info">
-            <h3>{student.name}</h3>
+            <div>
+              <h3>{student.name}</h3>
             <p>{student.email}</p>
             <p>{student.address?.city || student.city}</p>
+            </div>
 
             {isBasicStudent ? (
               <div className="student-meta">

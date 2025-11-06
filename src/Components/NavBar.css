@@ -3,14 +3,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #007bfe;
-  color: white;
+  background: #A7F3D0;
+  color: #334155;
   padding: 1rem 1.5rem;
   flex-wrap: wrap;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   margin: 0;
+
   
   /*  Ensure navbar sticks to top */
   position: relative;
@@ -19,7 +20,8 @@
 .nav-logo {
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 0; 
+  margin: 0;
+  color:#334155 
 }
 
 .nav-links {
@@ -28,11 +30,12 @@
   gap: 1.5rem;
   margin: 0; 
   padding: 0;
+  
 }
 
 .nav-links a {
   text-decoration: none;
-  color: white;
+  color:#334155 ;
   font-weight: 500;
   transition: color 0.2s ease;
   padding: 0.5rem 0.8rem; 

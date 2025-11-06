@@ -1,10 +1,84 @@
 .user-card {
-  background: #fff;
+
+  
   border-radius: 12px;
   padding: 1.2rem 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   word-wrap: break-word; 
+  display:flex;
+  flex-direction: row;
+  width:fit-content;
+  transition: all 0.3s ease;
+}
+
+.user-card:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+.user-details{
+  display:flex;
+  width:fit-content;  
+  flex-direction:column;
+  align-items:start;
+  
+  padding-left:17px;
+  padding-right:17px; 
+}
+
+.user-email{
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  gap:3px;
+}
+
+.user-city{
+    display:flex;
+  flex-direction:row;
+  align-items: center;
+  gap:3px;
+}
+
+.city-icon{
+  font-size:18px;
+  color:#636363
+}
+
+.city-text{
+        white-space:nowrap;
+    font-size:13px;
+    font-weight: 500;
+    color:#636363
+}
+
+
+.email-icon{
+  font-size:18px;
+  color:#636363
+}
+.email-text{
+    white-space:nowrap;
+    font-size:13px;
+    font-weight: 500;
+    color:#636363
+}
+
+
+
+.user-name{
+  font-size:20px;
+  font-weight:600;
+  color: black;
+  white-space:nowrap;
+}
+
+.user-image{
+      height:100px;
+    width:100px;
+    border-radius: 100%;
 }
 
 .user-card:hover {
@@ -12,17 +86,18 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-.user-card h3 {
+/* .user-card h3 {
   margin: 0 0 0.5rem 0;
   color: #333;
-  font-size: 1.2rem;
-}
+  
+} */
 
-.user-card p {
+/* .user-card p {
+  
   margin: 0.3rem 0;
   color: #555;
   font-size: 0.95rem;
-}
+} */
 
     
 @media (max-width: 400px) {

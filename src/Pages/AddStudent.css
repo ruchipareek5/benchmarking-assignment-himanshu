@@ -1,4 +1,6 @@
 .add-student-container {
+  background-color:#FFFDF9;
+  
   max-width: 600px;
   margin: 3rem auto;
   background: #ffffff;
@@ -9,7 +11,7 @@
 
 .add-student-container h2 {
   text-align: center;
-  color: #007bff;
+  color: #334155;
   margin-bottom: 0.5rem;
 }
 
@@ -78,13 +80,13 @@
 }
 
 .submit-btn {
-  background-color: #007bff;
+  background-color: #334155;
   color: #fff;
   margin-right: 0.5rem;
 }
 
 .submit-btn:hover {
-  background-color: #0056b3;
+  background-color: #FDE68A;
 }
 
 .cancel-btn {
