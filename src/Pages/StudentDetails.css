@@ -2,9 +2,11 @@
   padding: 2rem;
   background-color: #f3f4f6;
   min-height: 100vh;
+  
   display: flex;
   flex-direction: column;
-  align-items: center;
+  
+  align-items: flex-start; 
 }
 
 .back-btn {
@@ -17,10 +19,13 @@
   font-size: 1rem;
   margin-bottom: 2rem;
   transition: background-color 0.3s ease;
+
+  margin-left: 0;
+  align-self: flex-start; 
 }
 
 .back-btn:hover {
-  background-color: #334155;
+  background-color: #1e293b;
 }
 
 .student-card {
@@ -30,8 +35,11 @@
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
+  /* Ensure card is centered but button stays left */
+  align-self: center;
 }
 
+/* Rest of your CSS remains the same */
 .student-card h2 {
   color: #334155;
   margin-bottom: 1.5rem;
@@ -56,18 +64,15 @@
 
 .student-info h3 {
   margin: 0;
-  
   color: #222;
-  
 }
 
-.student-info{
-  
-  display:flex;
-  width:100%;
-  flex-direction:row;
+.student-info {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
 }
 
 .student-info p {
@@ -76,7 +81,6 @@
 }
 
 .student-meta {
-  
   margin-top: 1rem;
 }
 

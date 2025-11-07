@@ -47,6 +47,7 @@ export const HomePage = () => {
       .some((field) => field?.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
+
   return (
     <div className="home-container">
       <h1 className="welcome">Welcome to the Student Dashboard</h1>
