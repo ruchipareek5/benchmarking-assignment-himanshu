@@ -41,8 +41,10 @@ export const HomePage = () => {
   const allStudents = [...users, ...addedStudents];
 
  
-  const filteredUsers = allStudents.filter((user) =>
-    [user.name, user.email, user.city]
+  const filteredUsers = allStudents.filter((user) => 
+
+    
+    [user.name, user.email, user.address?.city]
       .filter(Boolean)
       .some((field) => field?.toLowerCase().includes(searchTerm.toLowerCase()))
   );

@@ -30,8 +30,6 @@ export default function AddStudent() {
 
     const { name, email, city } = formData;
 
-    
-
     // Basic validation
     if (!name.trim()) {
       setError("Name is required.");
@@ -59,31 +57,23 @@ export default function AddStudent() {
       phone: "",
       website: "",
       company: { name: "", catchPhrase: "", bs: "" },
-      profileImg: `https://randomuser.me/api/portraits/lego/${Math.floor(Math.random() * 8) + 1}.jpg` 
+      profileImg: "/DefaultProfilePic.png" // Changed from Lego avatar to your default image
     };
 
-
-
-   
     const existingStudents = JSON.parse(localStorage.getItem("addedStudents")) || [];
    
     // Add the new student to the beginning of the array
     const updatedStudents = [newStudent, ...existingStudents];
    
-
-    //Save back to localStorage with correct key "addedStudents"
+    // Save back to localStorage with correct key "addedStudents"
     localStorage.setItem("addedStudents", JSON.stringify(updatedStudents));
    
-
-    //Verify the data was actually saved
+    // Verify the data was actually saved
     const verifySave = JSON.parse(localStorage.getItem("addedStudents")) || [];
    
-
     // Reset form
     setFormData({ name: "", email: "", city: "" });
     setError("");
-
-  
 
     // Navigate back to home
     navigate("/");
